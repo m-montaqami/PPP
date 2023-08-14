@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kntuPPP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+</head>
+<body>
+  <div class="header">
+    <img src="{{ url_for('static', filename='css/kntu_logo.png') }}">
+    <h3>kntuPPP</h3>
+  </div>
+
+  <div class="menu">
+    <ul>
+      <li>
+        
+        <a href="{{ url_for('contact') }}">
+          <img src="{{url_for('static',filename='css/about-us-svgrepo-com.svg')}}"/>
+          <p>ارتباط با ما</p>
+        </a>
+      </li>
+      
+      <li>
+        
+        <a href="{{ url_for('av') }}">
+          <img src="{{url_for('static',filename='css/api-app-svgrepo-com.svg')}}"/>
+          <p>آنالیز نویز مشاهدات</p>
+          </a>
+      </li>
+
+      <li>
+        
+        <a href="{{ url_for('kntuapp') }}">
+          <img src="{{url_for('static',filename='css/api-app-svgrepo-com.svg')}}"/>
+          <p>kntuPPP</p>
+          </a>
+      </li>
+      
+      
+      <li>
+        
+        <a href="{{ url_for('index') }}">
+          <img src="{{url_for('static',filename='css/home-icon-silhouette-svgrepo-com.svg')}}"/>
+          <p>صفحه اصلی</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  
+  <div class="contact">
+    
+    
+    <ul>
+      <li>
+        <img src="{{ url_for('static', filename='css/email-svgrepo-com.svg') }}" />
+        <h4>amerian@kntu.ac.ir</h4>
+      </li>
+      <li>
+        <img src="{{ url_for('static', filename='css/email-svgrepo-com.svg') }}" />
+        <h4>Mohammad.Montaqami@email.kntu.ac.ir</h4>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+  </div>
+
+
+</body>
+</html>

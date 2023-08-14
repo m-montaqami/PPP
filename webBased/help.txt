@@ -1,0 +1,93 @@
+how to install and use webBased app (Ubuntu/debian):
+
+	1) sudo apt update
+I want (python3 3.8.10)
+
+	2) git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
+	3) echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+
+	4) echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+
+	5) echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+
+	6) exec "$SHELL"
+
+	7) sudo apt update; sudo apt install build-essential libssl-dev zlib1g-dev \
+	   libbz2-dev libreadline-dev libsqlite3-dev curl llvm \
+	   libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+it should be empty at first(pyenv versions)
+
+	8) pyenv install 3.8.10
+
+	9) pyenv global 3.8.10
+
+	10) git clone https://github.com/m-montaqami/PPP
+
+	11) mv kntuPPP/ app
+
+	12) cd app
+
+	13) python -m venv env
+	   (if error: apt install python??3.8-venv)
+
+	14) python -m venv env
+
+	15) source env/bin/activate
+
+	16) pip install -r requirements.txt 
+
+	17) deactivate
+
+	18) sudo ufw enable 
+
+	19) sudo apt install nginx
+
+	20) sudo ufw allow 'Nginx HTTP'
+
+	note for checking: sudo systemctl status nginx
+
+	21) sudo nano /etc/systemd/system/app.service
+
+		[Unit]
+		Description=A simple Flask uWSGI application
+		After=network.target
+
+		[Service]
+		User=<yourusername>
+		Group=www-data
+		WorkingDirectory=/home/<yourusername>/app
+		Environment="PATH=/home/<yourusername>/app/env/bin"
+		ExecStart=/home/<yourusername>/app/env/bin/uwsgi --ini app.ini
+
+		[Install]
+		WantedBy=multi-user.target
+
+
+	22) sudo systemctl start app
+
+	23) sudo systemctl enable app
+
+	note for checking: sudo systemctl status app
+
+	24) sudo nano /etc/nginx/sites-available/app
+
+		server {
+		    listen 80;
+		    server_name <your_ip_address>;
+
+		    location / {
+        		include uwsgi_params;
+		        uwsgi_pass unix:/home/<username>/app/app.sock;
+		    }
+		}
+
+
+	note for checking: sudo nginx -t
+
+	25) sudo ln -s /etc/nginx/sites-available/app /etc/nginx/sites-enabled
+
+	26) sudo systemctl restart nginx
+
+

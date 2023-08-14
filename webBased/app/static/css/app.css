@@ -1,0 +1,164 @@
+*{
+    font-family: 'Shabnam', sans-serif;
+}
+
+
+.header{
+    display: flex;
+    padding:2vh;
+    align-items: left;
+    height: auto;
+    border-bottom: 1px black solid;
+    background-color: lightgray;
+}
+
+.header img{
+    display: flex;
+    max-width: 12vh;
+}
+
+.header h3{
+    display: flex;
+    
+    color: darkblue;
+    padding-top: 12px;
+    /* font-size: 20px; */
+}
+
+.menu ul{
+    
+    /* padding: 2ch; */
+    padding-right: 15px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    /* flex-direction: column; */
+}
+
+.menu li{
+    direction: rtl;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 5px;
+    padding-right: 10px;
+}
+
+.menu img{
+    padding: 2px;
+    width: 2.5vh;
+    display: flex;
+}
+.menu a{
+    color: black;
+    display: flex;
+    flex-direction: row;
+    text-decoration-line: none;
+}
+
+.menu a:hover{
+    color: red;
+    /* font-size: larger; */
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+/* .autho input{
+    padding:5px;
+    font-weight: bold;
+} */
+
+
+.app{
+    
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    animation-duration: 1s;
+    animation-name:fadeIn;
+    animation-direction: alternate;
+}
+
+
+.app form{
+    width: fit-content;
+    max-width: fit-content;
+    width: auto;
+    direction: rtl;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    background-color:rgb(63, 82, 63);
+    flex-direction: column;
+    padding: 20px;
+
+
+}
+
+.app fieldset{
+    width: auto;  
+    background-color:rgb(146, 161, 146);
+
+}
+
+.autho input{
+    min-width: 250px;
+}
+.autho input:hover{
+    border: 1px solid darkgreen;
+}
+
+.app input{
+    border:none;
+    border-radius: 5px;
+    padding: 5px;
+}
+.app .ionex_file{
+    visibility: hidden;
+    display: none;
+}
+.app .plots{
+    display: flex;
+    flex-direction: column;
+}
+.submit{
+    padding: 20px;
+    display:flex;
+    visibility: visible;
+}
+
+.submit #submit{
+
+    padding: 5px;
+}
+.submit .lds-roller{
+    
+    padding: 4px;
+    padding-right: 20%;
+    display: none ;
+    visibility: hidden;
+}
+
+.footer{
+    display: flex;
+    padding:20px ;
+    /* padding: 20vh; */
+    border-top: 1px solid black;
+    background-color: lightgray;
+    
+    
+}
+
+
+@keyframes fadeIn {
+    0% {
+        /* margin-right: 100% ; */
+        opacity: 0;
+    }
+
+    100% {
+        /* margin-right: 0% ; */
+        opacity: 1;
+    }
+    
+}

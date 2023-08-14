@@ -1,0 +1,129 @@
+*{
+    font-family: 'Shabnam', sans-serif;
+}
+
+.header{
+    display: flex;
+    padding:2vh;
+    align-items: left;
+    height: auto;
+    border-bottom: 1px black solid;
+    background-color: lightgray;
+}
+
+.header img{
+    display: flex;
+    max-width: 12vh;
+}
+
+.header h3{
+    display: flex;
+    
+    color: darkblue;
+    padding-top: 12px;
+    /* font-size: 20px; */
+}
+
+.menu ul{
+    /* padding: 2ch; */
+    padding-right: 15px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    /* flex-direction: column; */
+}
+
+.menu li{
+    direction: rtl;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 5px;
+    padding-right: 10px;
+}
+
+.menu img{
+    padding: 2px;
+    width: 2.5vh;
+    display: flex;
+}
+.menu a{
+    color: black;
+    display: flex;
+    flex-direction: row;
+    text-decoration-line: none;
+}
+
+.menu a:hover{
+    color: red;
+    /* font-size: larger; */
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+
+
+.app{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    
+    
+    animation-duration: 1s;
+    animation-name:fadeIn;
+    /* animation-iteration-count: infinite; */
+    animation-direction: alternate;
+    /* height: 420px; */
+}
+
+.app .resFile{
+    padding: 5px;
+    text-decoration: none;
+    color:blue;
+}
+
+.app .resFile:hover{
+    
+    color: red;
+}
+
+.app .IMG{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+.app .IMG img{
+    display: flex;
+    padding: 5px;
+    /* min-width: 120px; */
+    /* max-width: 400px;
+    min-height: 400px; */
+}
+
+.app .IMG img:hover{
+    border:1px solid black;
+}
+.footer{
+    display: flex;
+    padding:20px ;
+    /* padding: 20vh; */
+    border-top: 1px solid black;
+    background-color: lightgray;
+    
+    
+}
+
+
+@keyframes fadeIn {
+    0% {
+        /* margin-right: 100% ; */
+        opacity: 0;
+    }
+
+    100% {
+        /* margin-right: 0% ; */
+        opacity: 1;
+    }
+    
+}

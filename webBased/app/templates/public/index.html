@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kntuPPP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <script src="{{ url_for('static', filename='js/desc.js') }}"></script>
+</head>
+<body>
+  <div class="header">
+    <img src="{{ url_for('static', filename='css/kntu_logo.png') }}">
+    <h3>kntuPPP</h3>
+  </div>
+
+  <div class="menu">
+    <ul>
+      <li>
+        
+        <a href="{{ url_for('contact') }}">
+          <img src="{{url_for('static',filename='css/about-us-svgrepo-com.svg')}}"/>
+          <p>ارتباط با ما</p>
+        </a>
+      </li>
+      
+      <li>
+        
+        <a href="{{ url_for('av') }}">
+          <img src="{{url_for('static',filename='css/api-app-svgrepo-com.svg')}}"/>
+          <p>آنالیز نویز مشاهدات</p>
+          </a>
+      </li>
+      <li>
+        
+        <a href="{{ url_for('kntuapp') }}">
+          <img src="{{url_for('static',filename='css/api-app-svgrepo-com.svg')}}"/>
+          <p>kntuPPP</p>
+          </a>
+      </li>
+      
+      
+      <li>
+        
+        <a href="{{ url_for('index') }}">
+          <img src="{{url_for('static',filename='css/home-icon-silhouette-svgrepo-com.svg')}}"/>
+          <p>صفحه اصلی</p>
+
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="desc">
+    <div class="navBar">
+      <ul>
+        <li>
+          <button id="btn1" onclick="descCtl('btn1','desc1')">
+            <p>اهداف پروژه</p>
+          </button>
+          
+        </li>
+        <li>
+          <button id="btn2" onclick="descCtl('btn2','desc2')">
+            <p>الگوریتم و محاسبات</p>
+          </button>
+          
+        </li>
+        <li>
+          <button id="btn3" onclick="descCtl('btn3','desc3')">
+            <p>نتایج</p>
+          </button>
+          
+        </li>
+      </ul>
+    </div>
+    <div class="descs">
+      <div id="desc1">
+        <p>در سال های اخیر تعیین موقعیت نقطه ای به عنوان
+          یکی از روش های تعیین موقعیت مورد توجه قرار گرفته است. 
+          دلیل این موضوع‌ مزیت هایی همچون بی نیازی این روش نسبت به ایستگاه مرجع 
+          (reference station) 
+          می باشد.
+        </p>
+        <p>
+          یکی از موارد مهم در دقت تعیین موقعیت؛ توجه به نویز مشاهدات دریافتی می باشد که این موضوع
+          ارتباط مستقیم با نوع گیرنده
+          GNSS
+          دارد.در مشاهدات علاوه بر نویز سفید؛ نویز های رنگی نیز  وجود دارد. روش های متفاوتی برای شناسایی نویز در مشاهدات 
+          معرفی گردیده است؛ در بیش تر این روش ها وجود ایستگاه مرجع الزامی می باشد.
+          در این پروژه از پژوهش 
+
+          استفاده گردیده است که در بخش
+          <a href="{{ url_for('av') }}">
+            آنالیز نویز مشاهدات
+          </a>
+          پیاده سازی گردیده است.
+        </p>
+        <p>
+          به منظور پیاده سازی این پروژه از زبان برنامه نویسی 
+          <a href="https://www.python.org/">
+            پایتون
+          </a>
+          استفاده گردیده است. کد این 
+          <a href="https://github.com/m-montaqami/PPP">پروژه</a>
+          به صورت منبع باز قابل دسترسی می باشد.
+        </p>
+        <p>
+          اهداف اصلی این پروژه به شرح زیر می باشد:
+        </p>
+        <ul>
+          <li>تهیه یک سرویس تحت وب جهت انجام محاسبات تعیین موقعیت نقطه ای</li>
+          <li>آنالیز نویز مشاهدات گیرنده های GNSS</li>
+        </ul>
+      </div>
+      <div id="desc2">
+        <p>
+          الگوریتم کلی مرتبط با بخش 
+          <a href="{{ url_for('kntuapp') }}">kntuPPP</a>
+          به شرح زیر است:
+        </p>
+        <ol>
+          <li>ورودی داده ها </li>
+          <li>اعمال تصحیحات به صورت زیر:
+            <ul>
+              <li>اثرات یونوسفری
+                (در صورت دو فرکانسه بودن از ترکیب عاری از یونوسفر مرتبه اول و در صورت تک فرکانسه بودن از فایل
+                IONEX
+                استفاده می گردد.)</li>
+              <li>اثرات تروپوسفری</li>
+              <li>اثرات نسبیتی</li>
+              <li>اعمال
+                DCB
+                در صورت موجود بودن فایل 
+              </li>
+            </ul>
+          </li>
+          <li>پردازش داده ها به کمک فیلتر کالمن</li>
+          <li>نتایج</li>
+        </ol>
+
+        <p>
+          الگوریتم کلی مرتبط با بخش 
+          <a href="{{ url_for('av') }}">آنالیز نویز مشاهدات</a>
+          برای محاسبه نویز شبه فاصله کد به شرح زیر است:
+        </p>
+        <ol>
+          <li>ورود مشاهدات</li>
+          <li>تشکیل ترکیب کد-فاز</li>
+          <li>محاسبه نرخ زمانی ترکیب بدست آمده در مرحله قبل</li>
+          <li>شناسایی و حذف اپک های دارای جهش فاز</li>
+          <li>شناسایی و حذف داده های پرت</li>
+          <li>استفاده از 
+            <a href="">واریانس آلن</a>
+            به منظور تشخیص پارامتر های نویز رنگی
+          </li>
+        </ol>
+
+        <p>
+          الگوریتم کلی مرتبط با بخش 
+          <a href="{{ url_for('av') }}">آنالیز نویز مشاهدات</a>
+          برای محاسبه نویز فاز حامل به شرح زیر است:
+        </p>
+        <ol>
+          <li>ورود مشاهدات</li>
+          <li>تشکیل ترکیب عاری از هندسه</li>
+          <li>محاسبه نرخ زمانی ترکیب بدست آمده در مرحله قبل</li>
+          <li>شناسایی و حذف اپک های دارای جهش فاز</li>
+          <li>شناسایی و حذف داده های پرت</li>
+          <li>استفاده از 
+            <a href="https://allantools.readthedocs.io/en/latest/">واریانس آلن</a>
+            به منظور تشخیص پارامتر های نویز رنگی
+          </li>
+        </ol>
+      </div>
+      <div id="desc3">
+        <p>
+          فایل های نهایی شامل:
+          <ol>
+            <li>فایل موقعیت محاسبه شده گیرنده</li>
+            <li>پلات های انتخاب شده توسط کاربر</li>
+          </ol>
+        </p>
+      </div>
+  </div>
+  </div>
+
+  
+  <div class="footer">
+    
+  </div>
+
+        
+    
+</body>
+</html>

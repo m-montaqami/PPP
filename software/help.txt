@@ -1,0 +1,15 @@
+how to install and use software app:
+	1)git clone https://github.com/m-montaqami/PPP
+	
+	2) reDirect to "software" folder ( cd PPP/software )
+	
+	3) install the packages in "requirements.txt" file using "pip":
+		in Ubuntu/debian : pip install requirements.txt 
+		in windows: py -m pip install requirements.txt
+		
+	4) customize the "config.py" folder
+	
+	5)if you are using py-IDE: just run "main.py"
+	  if your are using jupyter-notebook: there is an example in "test.ipynb"
+	
+	6)your results are now in output folder

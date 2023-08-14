@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kntuPPP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}" ></script>
+</head>
+<body>
+  <div class="header">
+    <img src="{{ url_for('static', filename='css/kntu_logo.png') }}">
+    <h3>kntuPPP</h3>
+  </div>
+
+  <div class="menu">
+    <ul>
+      <li>
+        
+        <a href="{{ url_for('contact') }}">
+          <img src="{{url_for('static',filename='css/about-us-svgrepo-com.svg')}}"/>
+          <p>ارتباط با ما</p>
+        </a>
+      </li>
+      
+      <li>
+        
+        <a href="{{ url_for('av') }}">
+          <img src="{{url_for('static',filename='css/api-app-svgrepo-com.svg')}}"/>
+          <p>آنالیز نویز مشاهدات</p>
+          </a>
+      </li>
+      
+      <li>
+        
+        <a href="{{ url_for('kntuapp') }}">
+          <img src="{{url_for('static',filename='css/api-app-svgrepo-com.svg')}}"/>
+          <p>kntuPPP</p>
+          </a>
+      </li>
+      
+      
+      <li>
+        
+        <a href="{{ url_for('index') }}">
+          <img src="{{url_for('static',filename='css/home-icon-silhouette-svgrepo-com.svg')}}"/>
+          <p>صفحه اصلی</p>
+
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+
+  <div class="app">
+
+    
+    <form method = "POST" enctype = "multipart/form-data" onsubmit={loader()}>
+
+      <fieldset>
+        <legend>
+          <p>
+            مشخصات کاربری
+          </p>
+
+        </legend>
+        <div  class="autho">
+          <!-- <label>Email Address:</label> -->
+          <input type="email" name="email" placeholder="ایمیل">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>
+          <p>
+            فایل های ورودی
+          </p>
+          
+        </legend>
+        <div  id="inputs">
+          <div><label>OBS File <input type="file" name="obs_file" required></label></div>
+          <div><label>Precise File (SP3) <input type="file" name="sp3_file" required></label></div>
+          <div class="ionex_file"><label>IONEX File <input type="file" name="ionex_file"></label></div>
+          <div><label>DCB File <input type="file" name="dcb_file"></label></div>
+        </div>
+      </fieldset>
+
+
+      <fieldset>
+        <legend>
+          <p>
+            سامانه و مشاهدات
+          </p>
+        </legend>
+
+          <div id="freqs_single">
+
+            <table border = "1" width = "50%">
+              <tbody>
+                <tr>
+                  <td>سامانه</td>
+                  <td>شبه فاصله کد</td>
+                  <td>فاز حامل</td>
+                </tr>
+                <tr>
+                  <td><label for="gps">GPS</label><br></td>                      
+                  <td>
+                    <select name="freq" id="freq" onchange={checkDual()}>
+                      <optgroup label="single Frequency">
+                        <option value="1">C1</option>
+                        <option value="2">P1</option>
+                        <option value="3">C1C</option>
+                      </optgroup>
+                      <optgroup label="Dual Frequency">
+                        <option value="4" selected="selected">C1-C2</option>
+                        <option value="5">P1-P2</option>
+                        <option value="6">C1-C5</option>
+                        <option value="7">C1C-C5X</option>
+                        <option value="8">C1C-C5Q</option>
+                      </optgroup>
+                    </select>
+                  </td>
+                  <td>
+                    <label><h5>use Phase measurement</h5><input type="checkbox" id="phase" name="use_phase" value="use_phase"></label>
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Select Mask</legend>
+        <div  class="elev">
+          <label>Elevation Mask(degree): </label>
+          <select name="elev" id="elev">
+            <option value="5" selected="selected">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+          </select>
+        </div>
+
+        <div  class="snr">
+          <label>Signal-to-noise Mask: </label>
+          <select name="snr" id="snr">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20" selected="selected">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Select GDOP threshold</legend>
+        <div  class="gdop">
+          <label>GDOP threshold: </label>
+          <select name="gdop" id="gdop">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10" selected="selected">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>انتخاب خروجی </legend>
+        <div class="plots">
+          <label >signal-to-noise info: <input type="checkbox" name="plt1"></label>
+          <label >UnKnown Residual: <input type="checkbox" name="plt2"></label>
+          <label >Horizontal position: <input type="checkbox" name="plt3"></label>
+          <label >reciever estimated clock: <input type="checkbox" name="plt4"></label>
+          <label >GDOP: <input type="checkbox" name="plt5"></label>
+
+        </div>
+      </fieldset>
+      <div class="submit">
+        <input id="submit" type="submit" value="submit">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </form>
+
+  </div>
+  
+  <div class="footer">
+  </div>
+
+    
+</body>
+</html>
